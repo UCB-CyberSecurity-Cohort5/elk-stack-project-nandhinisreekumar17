@@ -6,10 +6,10 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the following playbook files may be used to install only certain pieces of it, such as Filebeat.
 
-* [my-playbook.yml](Ansible/my-playbook.yml) – playbook used to install D*mn Vulnerable Web App (DVWA) servers
-* [install-elk.yml](Ansible/install-elk.yml) – playbook used to install ELK Server
-* [filebeat-playbook.yml](Ansible/filebeat-playbook.yml) – playbook used to install and configure Filebeat on ELK Server and DVWA servers
-* [metricbeat-playbook.yml](Ansible/metricbeat-playbook.yml) – playbook used to install and configure Metricbeat on ELK Server and DVWA servers
+* [my-playbook.yml](playbooks/my-playbook.yml) – playbook used to install D*mn Vulnerable Web App (DVWA) servers
+* [install-elk.yml](playbooks/install-elk.yml) – playbook used to install ELK Server
+* [filebeat-playbook.yml](playbooks/filebeat-playbook.yml) – playbook used to install and configure Filebeat on ELK Server and DVWA servers
+* [metricbeat-playbook.yml](playbooks/metricbeat-playbook.yml) – playbook used to install and configure Metricbeat on ELK Server and DVWA servers
 
 This document contains the following details:
 - Description of the Topology
@@ -120,8 +120,8 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-*	Copy the [filebeat-config.yml](Ansible/filebeat-config.yml) and [metribeat-config.yml](Ansible/metricbeat-config.yml) files to [/etc/ansible/files](Ansible/ansible.confg).
-*	Update the [/etc/ansible/hosts](Ansible/hosts) file to include the machines on which the ELK server and Filebeat should be installed. 
+*	Copy the [filebeat-config.yml](playbooks/filebeat-config.yml) and [metribeat-config.yml](playbooks/metricbeat-config.yml) files to [/etc/ansible/files](playbooks/ansible.confg).
+*	Update the [/etc/ansible/hosts](playbooks/hosts) file to include the machines on which the ELK server and Filebeat should be installed. 
 
 ```
 [webservers]

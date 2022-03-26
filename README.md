@@ -24,7 +24,7 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
+Load balancing ensures that the application will be highly available, in addition to restricting access to the network. A load balancer is placed in front of all machines in the virtual network, RedTeamNet.
 
 What aspect of security do load balancers protect?
 
@@ -34,7 +34,7 @@ What is the advantage of a jump box?
 
 - The jump box is placed in front of the other machines preventing their exposure to the public. These machines can be connected to using dynamic IP. We can restrict the IP addresses that can communicate with the jump box by creating inbound security rules in the network security groups.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system metrics.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems and system metrics.
 
 What does Filebeat watch for?
 
@@ -52,7 +52,9 @@ The configuration details of each machine may be found below.
 | Web-1                	| Web Server 	| 10.0.0.5    	| Linux            	|
 | Web-2                	| Web Server 	| 10.0.0.6    	| Linux            	|
 | Web-3                	| Web Server 	| 10.0.0.7    	| Linux            	|
-| ELKServer            	| ELK Stack  	| 10.1.0.4    	| Linux            	|
+| ELKServer            	| Monitoring  	| 10.1.0.4    	| Linux            	|
+
+The webservers belong to an availability set.
 
 ### Access Policies
 
@@ -107,8 +109,8 @@ This ELK server is configured to monitor the following machines:
 
 We have installed the following Beats on these machines:
 
-*	Filebeat
-*	Metricbeat
+*	[Filebeat](playbooks/filebeat-playbook.yml)
+*	[Metricbeat](playbooks/metricbeat-playbook.yml)
 
 These Beats allow us to collect the following information from each machine:
 

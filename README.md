@@ -136,4 +136,14 @@ SSH into the control node and follow the steps below:
 ```
 *	Run the playbook and navigate to http://[ELK_Server_Public_IP]:5601 to check that the installation worked as expected.
 
+---
+#### Contents of Repository
 
+- ConfigFiles: Filebeat and Metricbeat configuration, Ansible configuration and hosts files
+- Diagrams: Network Diagrams from Networking and Cloud Security
+- Documentation: Kibana investigation report and Usage Instructions for Automated ELK Deployment
+- Images: Images used in the README
+- Linux: Shell scripts
+- playbooks: Playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
+
+---

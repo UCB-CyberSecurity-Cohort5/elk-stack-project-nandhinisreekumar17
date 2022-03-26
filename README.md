@@ -141,7 +141,7 @@ SSH into the control node and follow the steps below:
 
 - **Ansible**: Filebeat and Metricbeat configuration, Ansible configuration, hosts files, playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
 - **Diagrams:** Network Diagrams from Networking and Cloud Security
-- **Documentation:** Kibana investigation report and Usage Instructions for Automated ELK Deployment
+- **Documentation:** Interview Questions, Kibana investigation report and Usage Instructions for Automated ELK Deployment
 - **Images:** Images used in the README
 - **Linux:** Shell scripts
 

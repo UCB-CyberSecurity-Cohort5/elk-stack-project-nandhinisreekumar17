@@ -1,3 +1,14 @@
+# Contents of Repository
+
+- **Ansible**: Filebeat and Metricbeat configuration, Ansible configuration, hosts files, playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
+- **Diagrams:** Network Diagrams from Networking and Cloud Security
+- **Documentation:** Kibana investigation report and Usage Instructions for Automated ELK Deployment
+- **Images:** Images used in the README
+- **Linux:** Shell scripts
+- **README.md:** Automated ELK Stack Deployment
+
+---
+
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
@@ -169,15 +180,3 @@ On Azure UI, we can check the settings for the network security groups which lis
 Since we have created an inbound security rule that Jump box can be only accessed from my personal IP address and other VMs can only be accessed through the jump box, I believe the solution guarantees that the Project 1 network is now "immune" to all unauthorized access.
 
 </details>
-
----
-
-#### Contents of Repository
-
-- **Ansible**: Filebeat and Metricbeat configuration, Ansible configuration, hosts files, playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
-- **Diagrams:** Network Diagrams from Networking and Cloud Security
-- **Documentation:** Interview Questions, Kibana investigation report and Usage Instructions for Automated ELK Deployment
-- **Images:** Images used in the README
-- **Linux:** Shell scripts
-
----

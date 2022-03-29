@@ -284,24 +284,25 @@ In order to verify the ELK Server is functioning properly and Filebeat and Metri
 2.	Generate a high amount of CPU usage on the pen-testing machines and verify that Kibana picks up this data.
 3.	Generate a high amount of web requests to your pen-testing servers and make sure that Kibana is picking them up.
 
-Generate a high amount of failed SSH login attempts
+#### Generate a high amount of failed SSH login attempts
 
 1.	Instead of accessing the Web-1 through the Ansible container, we connect from the Jumpbox. This would record the failed login attempts because the Ansible container contains our SSH keys.
 
-ssh RedAdmin@10.0.0.5
+	**ssh RedAdmin@10.0.0.5**
 
 2.	Ran the above command in a loop to generate failed login log entries.
 
-for i in {1..10}; do ssh RedAdmin@10.0.0.5; done
+	**for i in {1..10}; do ssh RedAdmin@10.0.0.5; done**
+
 Syntax breakdown:
-•	for begins the for loop.
-•	i ∫ creates a variable named i that will hold each number in our list.
-•	{1..10} creates a list of 10 numbers, each of which will be given to our i variable.
-•	; separates the portions of for loop when written on one line.
-•	do indicates the action taken by each loop.
-•	ssh RedAdmin@10.0.0.5 is the command do runs.
-•	; separates the portions of for loop when written on one line.
-•	done closes the for loop.
+- `for` begins the `for` loop.
+- `i` creates a variable named `i` that will hold each number in our list.
+- `{1..10}` creates a list of 10 numbers, each of which will be given to our `i` variable.
+- `;` separates the portions of `for` loop when written on one line.
+- `do` indicates the action taken by each loop.
+- `ssh RedAdmin@10.0.0.5` is the command `do` runs.
+- `;` separates the portions of `for` loop when written on one line.
+- `done` closes the `for`- loop.
 
  
 

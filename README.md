@@ -2,7 +2,7 @@
 
 - **Ansible**: Filebeat and Metricbeat configuration, Ansible configuration, hosts files, playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
 - **Diagrams:** Network Diagrams from Networking and Cloud Security
-- **Documentation:** Kibana investigation report and Usage Instructions for Automated ELK Deployment
+- **Documentation:** Kibana investigation report and Usage Instructions for Automated ELK Stack Deployment
 - **Images:** Images used in the README
 - **Linux:** Shell scripts
 - **README.md:** Automated ELK Stack Deployment
@@ -148,6 +148,273 @@ SSH into the control node and follow the steps below:
 *	Run the playbook and navigate to http://[ELK_Server_Public_IP]:5601 to check that the installation worked as expected.
 
 With the help of Wireshark and Kibana, we can monitor the VMs to detect any suspicious authentication attempts.
+
+<details><summary><b> Click here for the report of the investigation completed using Kibana. </b> </summary>
+  
+1.	In the last 7 days, how many unique visitors were located in India?
+
+Answer : 223
+
+![Red Team Network Diagram](Images/Red_Team_Network_Diagram.png)
+
+2.	In the last 24 hours of the visitors from China, how many were using Mac OSX?
+
+Answer : 13
+
+ 
+
+3.	In the last 2 days, what percentage of visitors received 404 errors? How about 503 errors?
+
+Answer : 404 – 0% ; 503 – 0%
+ 
+
+4.	In the last 7 days, what country produced the majority of the traffic on the website?
+
+Answer : China
+
+ 
+
+5.	Of the traffic that's coming from that country, what time of day had the highest amount
+of activity?
+
+Answer : 10 am and 12 pm
+
+ 
+
+ 
+
+6.	List all the types of downloaded files that have been identified for the last 7 days, along
+with a short description of each file type.
+
+o	gz: .gz files are archived files compressed by the standard GNU zip (gzip) compression algorithm. It stands for Gnu Zipped Archive.
+o	css: .css files are used to format the contents of a webpage like indentation, font, size, color, line spacing, border and location of HTML information on a webpage. It stands for Cascading Style Sheet. 
+o	zip: .zip files are archive file that contains one or more compressed files or directories. It supports lossless data compression. It stands for zipped file.
+o	deb: A .deb file is a Debian Software Package file used by Debian Linux Distribution and its variants. Each DEB file is a standard Unix archive that contains two .tar archives: one for installer control information and another for installable data.
+o	rpm: .rpm file is an installation package originally developed for the Red Hat Linux operating system. It stands for Red Hat Package Manager File.
+
+ 
+
+From Unique Visitors Vs. Average Bytes chart,
+
+7.	Locate the time frame in the last 7 days with the most amount of bytes (activity).
+
+Answer: 6 pm on 20th March 2022
+
+ 
+
+8.	In your own words, is there anything that seems potentially strange about this activity?
+
+Answer: It is strange that a single visitor is using a much higher number of bytes (15709) than other visitors.
+
+On filtering the data by this event, 
+
+9.	What is the timestamp for this event?
+
+Answer: The time stamp is 19:55 for the filter Mar 20, 2022 @ 18:00:0 Mar 20, 2022 @ 21:00:0.
+
+ 
+
+10.	What kind of file was downloaded?
+
+Answer:  An rpm file
+
+ 
+
+11.	From what country did this activity originate?
+
+Answer: India
+ 
+
+12.	What HTTP response codes were encountered by this visitor?
+
+Answer: 200
+
+ 
+
+Switch over to the Kibana Discover page,
+
+13.	What is the source IP address of this activity?
+
+Answer: 35.143.166.159
+
+14.	What are the geo coordinates of this activity?
+
+Answer: { "lat": 43.34121, "lon": -73.6103075 }
+ 
+
+15.	What OS was the source machine running?
+
+Answer: Windows 8
+
+ 
+
+16.	What is the full URL that was accessed?
+
+Answer: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.3.2-i686.rpm
+
+ 
+
+17.	From what website did the visitor's traffic originate?
+
+Answer: Facebook
+
+ 
+
+18.	What do you think the user was doing?
+
+Answer:  I think the user was trying to download an installation package (Metricbeat) for Linux from the website.
+
+19.	Was the file they downloaded malicious? If not, what is the file used for?
+
+Answer: The installation does not seem malicious but could be. The file is usually used to download or update Metricbeat.
+
+20.	Is there anything that seems suspicious about this activity?
+Answer: Yes, the referrer for the download website was Facebook.
+
+21.	Is any of the traffic you inspected potentially outside of compliance guidelines?
+
+Answer: Since the download link was posted on Facebook, it might be outside of compliance guidelines. Ideally speaking, it is not expected to have a download/update link posted to social media.
+
+In order to verify the ELK Server is functioning properly and Filebeat and Metricbeat are collecting data correctly, the following tasks are performed:
+
+1.	Generate a high amount of failed SSH login attempts and verify that Kibana is picking up this activity.
+2.	Generate a high amount of CPU usage on the pen-testing machines and verify that Kibana picks up this data.
+3.	Generate a high amount of web requests to your pen-testing servers and make sure that Kibana is picking them up.
+
+Generate a high amount of failed SSH login attempts
+
+1.	Instead of accessing the Web-1 through the Ansible container, we connect from the Jumpbox. This would record the failed login attempts because the Ansible container contains our SSH keys.
+
+ssh RedAdmin@10.0.0.5
+
+2.	Ran the above command in a loop to generate failed login log entries.
+
+for i in {1..10}; do ssh RedAdmin@10.0.0.5; done
+Syntax breakdown:
+•	for begins the for loop.
+•	i ∫ creates a variable named i that will hold each number in our list.
+•	{1..10} creates a list of 10 numbers, each of which will be given to our i variable.
+•	; separates the portions of for loop when written on one line.
+•	do indicates the action taken by each loop.
+•	ssh RedAdmin@10.0.0.5 is the command do runs.
+•	; separates the portions of for loop when written on one line.
+•	done closes the for loop.
+
+ 
+
+3.	Checked Kibana logs if the login attempts were recorded.
+
+ 
+
+Bonus: Created a nested loop that generates SSH login attempts across all webservers.
+
+while true; do for i in {5..7}; do ssh RedAdmin@10.0.0.$i; done; done
+
+Syntax Breakdown:
+
+•	i in creates a variable named i that will hold each number in our list.
+•	{5..7} creates a list of numbers (5, 6 and 7), each of which will be given to i variable to represent the IP addresses of the webservers.
+•	; separates the portions of for loop when it is written on one line.
+•	do indicates the action taken each loop.
+•	ssh RedAdmin@10.0.0.$i is the command do runs . It is passing in the $i variable so the ssh command will be run on each webserver.
+•	; separates the portions of for loop when it is written on one line.
+•	done closes the for loop.
+
+Generate a high amount of CPU usage on the pen-testing machines
+
+1.	Started and attached to the Ansible container from the Jumpbox
+
+sudo docker start competent_lumiere
+sudo docker attach competent_lumiere
+
+ 
+
+2.	Connected by SSH from the Ansible container to Web-1.
+
+ 
+
+3.	Intstalled the stress program.
+
+sudo apt install stress
+
+ 
+
+4.	Let stress run for a few minutes.
+
+sudo stress --cpu 1
+
+ 
+
+5.	Checked Kibana for the change in the system metrics.
+
+ 
+
+6.	Ran the stress program on all three of the VMs and checked the Metric page on Kibana.
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+Generate a high amount of web requests to your pen-testing servers
+
+1.	Logged into the Jumpbox.
+
+ssh RedAdmin@13.83.47.196
+
+2.	Ran wget command to download index.html file.
+
+wget 10.0.0.5
+
+3.	Listed the contents to view the fie downloaded.
+
+ls
+
+4.	Ran a loop to generate a lot of web requests using wget.
+for i in {1..10}; do wget 10.0.0.5; done
+Syntax breakdown:
+•	for begins the for loop.
+•	i in creates a variable named i that will hold each number in our list.
+•	{1..10} creates a list of 10 numbers, each of which will be given to our i variable.
+•	; separates the portions of for loop when written on one line.
+•	do indicates the action taken by each loop.
+•	wget 10.0.0.5 is the command do runs.
+•	; separates the portions of for loop when written on one line.
+•	done closes the for loop
+
+ 
+
+On checking the Metrics page for Web-1 on Kibana, the following was noted.
+
+ 
+
+ 
+
+Bonus: Since wget creates a lot of duplicate files, we use rm command to delete all files. We use the following command not to save any files.
+while true; do wget 10.0.0.5 -O /dev/null; done
+ 
+Bonus: Write a nested loop that sends your wget command to all VMs over and over.
+	while true; do for i in {5..7}; do wget -O /dev/null 10.0.0.$i; done; done
+
+  Syntax Breakdown:
+-	`i` in creates a variable named `i` that will hold each number in our list.
+-	`{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to `i` variable to represent the IP addresses of the webservers.
+-	`;` separates the portions of `for` loop when it is written on one line.
+-	`do` indicates the action taken each loop.
+-	`wget 10.0.0.$i` is the command do runs . It is passing in the `$i` variable so the ssh command will be run on each webserver.
+-	`done` closes the for loop.
+
+ </details>
 
 <details><summary> <b> Click here for answers to potential interview questions based on the Automated ELK Server </b> </summary>
 

@@ -331,97 +331,105 @@ In order to verify the ELK Server is functioning properly and Filebeat and Metri
 
 1.	Started and attached to the Ansible container from the Jumpbox
 
-``sudo docker start competent_lumiere```
-``sudo docker attach competent_lumiere```
+	``sudo docker start competent_lumiere```
+	``sudo docker attach competent_lumiere```
 
  ![Start and attach the Ansible container](Images/Started_and_attached_to_the_Ansible_container.png)
 
 2.	Connected by SSH from the Ansible container to Web-1.
 
-```ssh RedAdmin@10.0.0.5```
+	```ssh RedAdmin@10.0.0.5```
 	
  ![SSH connection from Ansible container to Web-1](Images/SSH_from_Ansible_container_to_web_1.png) 
 
 3.	Intstalled the stress program.
 
-```sudo apt install stress```
+	```sudo apt install stress```
 	
  ![Install stress](Images/Install_stress.png) 
 
 4.	Let stress run for a few minutes.
 
-```sudo stress --cpu 1```
+	```sudo stress --cpu 1```
 	
   ![Run stress](Images/Run_stress.png) 
 
 5.	Checked Kibana for the change in the system metrics.
 
- ![Check Kibana for change in metrics](Images/Install_stress.png)  
+ ![Check Kibana for change in metrics](Images/Kibana_check_change_metrics.png)  
 
 6.	Ran the stress program on all three of the VMs and checked the Metric page on Kibana.
 
- 
+ ![Run stress program on Web-1 Inventory](Images/Stress_program_on_web_1_inventory.png)
+	
+ ![Run stress program on Web-1 CPU Usage](Images/Stress_program_on_web_1_CPU_usage.png)
+	
+ ![Run stress program on Web-2 Inventory](Images/Stress_program_on_web_2_inventory.png)
+	
+ ![Run stress program on Web-2 CPU Usage](Images/Stress_program_on_web_2_CPU_usage.png)
+	
+ ![Run stress program on Web-3 Inventory](Images/Stress_program_on_web_3_inventory.png)
+	
+ ![Run stress program on Web-3 CPU Usage](Images/Stress_program_on_web_3_CPU_usage.png)
+	
 
-
- 
-
- 
-
-
- 
-
- 
-
-
- 
-
-Generate a high amount of web requests to your pen-testing servers
+#### Generate a high amount of web requests to your pen-testing servers
 
 1.	Logged into the Jumpbox.
 
-ssh RedAdmin@13.83.47.196
+	```ssh RedAdmin@13.83.47.196```
 
 2.	Ran wget command to download index.html file.
 
-wget 10.0.0.5
+	```wget 10.0.0.5```
 
 3.	Listed the contents to view the fie downloaded.
 
-ls
+	```ls```
 
 4.	Ran a loop to generate a lot of web requests using wget.
-for i in {1..10}; do wget 10.0.0.5; done
-Syntax breakdown:
-•	for begins the for loop.
-•	i in creates a variable named i that will hold each number in our list.
-•	{1..10} creates a list of 10 numbers, each of which will be given to our i variable.
-•	; separates the portions of for loop when written on one line.
-•	do indicates the action taken by each loop.
-•	wget 10.0.0.5 is the command do runs.
-•	; separates the portions of for loop when written on one line.
-•	done closes the for loop
 
+	```for i in {1..10}; do wget 10.0.0.5; done```
+	
+**Syntax breakdown:**
+	
+- `for` begins the `for` loop.
+- `i` in creates a variable named `i` that will hold each number in our list.
+- `{1..10}` creates a list of 10 numbers, each of which will be given to our `i` variable.
+- `;` separates the portions of `for` loop when written on one line.
+- `do` indicates the action taken by each loop.
+- `wget 10.0.0.5` is the command `do` runs.
+- `;` separates the portions of `for` loop when written on one line.
+- `done` closes the `for` loop
+
+ ![Loop to generate a lot of web requests using wget](Images/Generate_lot_of_web_requests_using_wget.png)
+
+On checking the Metrics page for Web-1 on Kibana, the following was noted:
+
+![Kibana metrics for wget for Web 1](Images/Kibana_web_requests_using_wget_1.png)
+
+![Kibana metrics for wget for Web 1](Images/Kibana_web_requests_using_wget_2.png)
+
+**Bonus:** Since `wget` creates a lot of duplicate files, we use `rm` command to delete all files. We use the following command not to save any files.
+
+```while true; do wget 10.0.0.5 -O /dev/null; done```
+
+![Remove duplicate files](Images/Command_not_to_save_files.png)
  
+**Bonus:** Write a nested loop that sends your wget command to all VMs over and over.
+	
+```while true; do for i in {5..7}; do wget -O /dev/null 10.0.0.$i; done; done```
 
-On checking the Metrics page for Web-1 on Kibana, the following was noted.
-
- 
-
- 
-
-Bonus: Since wget creates a lot of duplicate files, we use rm command to delete all files. We use the following command not to save any files.
-while true; do wget 10.0.0.5 -O /dev/null; done
- 
-Bonus: Write a nested loop that sends your wget command to all VMs over and over.
-	while true; do for i in {5..7}; do wget -O /dev/null 10.0.0.$i; done; done
-
-  Syntax Breakdown:
--	`i` in creates a variable named `i` that will hold each number in our list.
--	`{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to `i` variable to represent the IP addresses of the webservers.
--	`;` separates the portions of `for` loop when it is written on one line.
--	`do` indicates the action taken each loop.
--	`wget 10.0.0.$i` is the command do runs . It is passing in the `$i` variable so the ssh command will be run on each webserver.
--	`done` closes the for loop.
+**Syntax Breakdown:**
+	
+- `i` in creates a variable named `i` that will hold each number in our list.
+- `{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to `i` variable to represent the IP addresses of the webservers.
+- `;` separates the portions of `for` loop when it is written on one line.
+- `do` indicates the action taken each loop.
+- `wget 10.0.0.$i` is the command `do` runs . It is passing in the `$i` variable so the ssh command will be run on each webserver.
+- `done` closes the `for` loop.
+	
+![Send wget command to all webservers](Images/Loop_that_sends_your_wget_command_to_all_VMs.png)
 
  </details>
 

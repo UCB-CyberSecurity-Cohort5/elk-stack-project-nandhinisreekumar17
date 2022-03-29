@@ -167,7 +167,7 @@ With the help of Wireshark and Kibana, we can monitor the VMs to detect any susp
 
 ```Answer : 404 – 0% ; 503 – 0%```
 	
-![Percentage of visitors who received 404 errors and 503 errors](Images/404_503_errors\.png)
+![Percentage of visitors who received 404 errors and 503 errors](Images/404_503_errors.png)
  
 
 4.	In the last 7 days, what country produced the majority of the traffic on the website?

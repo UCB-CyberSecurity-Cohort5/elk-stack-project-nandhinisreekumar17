@@ -2,7 +2,6 @@
 
 - **Ansible**: Filebeat and Metricbeat configuration, Ansible configuration, hosts files, playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
 - **Diagrams:** Network Diagrams from Networking and Cloud Security
-- **Documentation:** Kibana investigation report and Usage Instructions for Automated ELK Stack Deployment
 - **Images:** Images used in the README
 - **Linux:** Shell scripts
 - **README.md:** Automated ELK Stack Deployment
@@ -433,6 +432,14 @@ On checking the Metrics page for Web-1 on Kibana, the following was noted:
 
  </details>
  
+---
+
+<details><summary> <b> Click here for the usage instructions for Automated ELK Stack Deployment </b> </summary>
+	
+
+	
+</details>
+
 ---
 
 <details><summary> <b> Click here for answers to potential interview questions based on the Automated ELK Server </b> </summary>

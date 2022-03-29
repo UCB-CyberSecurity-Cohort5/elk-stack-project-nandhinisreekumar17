@@ -338,23 +338,25 @@ In order to verify the ELK Server is functioning properly and Filebeat and Metri
 
 2.	Connected by SSH from the Ansible container to Web-1.
 
- 
+```ssh RedAdmin@10.0.0.5```
+	
+ ![SSH connection from Ansible container to Web-1](Images/SSH_from_Ansible_container_to_web_1.png) 
 
 3.	Intstalled the stress program.
 
-sudo apt install stress
-
- 
+```sudo apt install stress```
+	
+ ![Install stress](Images/Install_stress.png) 
 
 4.	Let stress run for a few minutes.
 
-sudo stress --cpu 1
-
- 
+```sudo stress --cpu 1```
+	
+  ![Run stress](Images/Run_stress.png) 
 
 5.	Checked Kibana for the change in the system metrics.
 
- 
+ ![Check Kibana for change in metrics](Images/Install_stress.png)  
 
 6.	Ran the stress program on all three of the VMs and checked the Metric page on Kibana.
 

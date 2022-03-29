@@ -169,17 +169,20 @@ With the help of Wireshark and Kibana, we can monitor the VMs to detect any susp
 	
 ![Percentage of visitors who received 404 errors and 503 errors](Images/404_503_errors.png)
  
-
 4.	In the last 7 days, what country produced the majority of the traffic on the website?
 
-	Answer : China
+```Answer : China```
+	
+![Country that produced the majority of the traffic on the website](Images/Majority_traffic.png)
  
 
-5.	Of the traffic that's coming from that country, what time of day had the highest amount
-of activity?
+5.	Of the traffic that's coming from that country, what time of day had the highest amount of activity?
 
-	Answer : 10 am and 12 pm
+```Answer : 10 am and 12 pm```
+	
+![Time of the day that had the highest amount of activity](Images/Highest_amount_of_traffic_10.png)
 
+![Time of the day that had the highest amount of activity](Images/Highest_amount_of_traffic_12.png)
  
 
  

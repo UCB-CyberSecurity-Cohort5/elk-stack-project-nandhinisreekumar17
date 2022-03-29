@@ -150,34 +150,31 @@ SSH into the control node and follow the steps below:
 With the help of Wireshark and Kibana, we can monitor the VMs to detect any suspicious authentication attempts.
 
 <details><summary><b> Click here for the report of the investigation completed using Kibana. </b> </summary>
-  
+<br> 
 1.	In the last 7 days, how many unique visitors were located in India?
 
-Answer : 223
+```Answer : 223```
 
-![Red Team Network Diagram](Images/Red_Team_Network_Diagram.png)
 
 2.	In the last 24 hours of the visitors from China, how many were using Mac OSX?
 
-Answer : 13
-
- 
+```Answer : 13```
+	
 
 3.	In the last 2 days, what percentage of visitors received 404 errors? How about 503 errors?
 
-Answer : 404 – 0% ; 503 – 0%
+	Answer : 404 – 0% ; 503 – 0%
  
 
 4.	In the last 7 days, what country produced the majority of the traffic on the website?
 
-Answer : China
-
+	Answer : China
  
 
 5.	Of the traffic that's coming from that country, what time of day had the highest amount
 of activity?
 
-Answer : 10 am and 12 pm
+	Answer : 10 am and 12 pm
 
  
 

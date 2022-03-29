@@ -155,15 +155,19 @@ With the help of Wireshark and Kibana, we can monitor the VMs to detect any susp
 
 ```Answer : 223```
 
-
+![Unique visitors located in India](Images/India_unique.png)
+	
 2.	In the last 24 hours of the visitors from China, how many were using Mac OSX?
-
+	
 ```Answer : 13```
 	
-
+![Visitors from China using Mac OSX](Images/China_macox.png)
+	
 3.	In the last 2 days, what percentage of visitors received 404 errors? How about 503 errors?
 
-	Answer : 404 – 0% ; 503 – 0%
+```Answer : 404 – 0% ; 503 – 0%```
+	
+![Percentage of visitors who received 404 errors and 503 errors](Images/404_503_errors\.png)
  
 
 4.	In the last 7 days, what country produced the majority of the traffic on the website?

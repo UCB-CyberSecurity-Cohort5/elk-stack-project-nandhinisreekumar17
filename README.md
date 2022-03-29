@@ -288,13 +288,14 @@ In order to verify the ELK Server is functioning properly and Filebeat and Metri
 
 1.	Instead of accessing the Web-1 through the Ansible container, we connect from the Jumpbox. This would record the failed login attempts because the Ansible container contains our SSH keys.
 
-	**ssh RedAdmin@10.0.0.5**
+	```ssh RedAdmin@10.0.0.5```
 
 2.	Ran the above command in a loop to generate failed login log entries.
 
-	**for i in {1..10}; do ssh RedAdmin@10.0.0.5; done**
+	```for i in {1..10}; do ssh RedAdmin@10.0.0.5; done```
 
-Syntax breakdown:
+**Syntax breakdown:**
+	
 - `for` begins the `for` loop.
 - `i` creates a variable named `i` that will hold each number in our list.
 - `{1..10}` creates a list of 10 numbers, each of which will be given to our `i` variable.
@@ -304,34 +305,36 @@ Syntax breakdown:
 - `;` separates the portions of `for` loop when written on one line.
 - `done` closes the `for`- loop.
 
- 
+![Loop to generate failed login log entries](Images/Loop_to_generate_failed_login_log_entries.png)
 
 3.	Checked Kibana logs if the login attempts were recorded.
 
- 
+![Kibana failed login log entries](Images/Kibana_failed_login_log_entries.png) 
 
-Bonus: Created a nested loop that generates SSH login attempts across all webservers.
+**Bonus:** Created a nested loop that generates SSH login attempts across all webservers.
 
-while true; do for i in {5..7}; do ssh RedAdmin@10.0.0.$i; done; done
+```while true; do for i in {5..7}; do ssh RedAdmin@10.0.0.$i; done; done```
 
-Syntax Breakdown:
+**Syntax Breakdown:**
 
-•	i in creates a variable named i that will hold each number in our list.
-•	{5..7} creates a list of numbers (5, 6 and 7), each of which will be given to i variable to represent the IP addresses of the webservers.
-•	; separates the portions of for loop when it is written on one line.
-•	do indicates the action taken each loop.
-•	ssh RedAdmin@10.0.0.$i is the command do runs . It is passing in the $i variable so the ssh command will be run on each webserver.
-•	; separates the portions of for loop when it is written on one line.
-•	done closes the for loop.
+- `i` creates a variable named `i` that will hold each number in our list.
+- `{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to `i` variable to represent the IP addresses of the webservers.
+- `;` separates the portions of `for` loop when it is written on one line.
+- `do` indicates the action taken each loop.
+- `ssh RedAdmin@10.0.0.$i` is the command `do` runs . It is passing in the `$i` variable so the ssh command will be run on each webserver.
+- `;` separates the portions of `for` loop when it is written on one line.
+- `done` closes the for loop.
 
-Generate a high amount of CPU usage on the pen-testing machines
+![Loop to generate failed login log entries to all webservers](Images/Loop_to_generate_failed_login_log_entries_to_all_VMs.png) 
+
+#### Generate a high amount of CPU usage on the pen-testing machines
 
 1.	Started and attached to the Ansible container from the Jumpbox
 
-sudo docker start competent_lumiere
-sudo docker attach competent_lumiere
+``sudo docker start competent_lumiere```
+``sudo docker attach competent_lumiere```
 
- 
+ ![Start and attach the Ansible container](Images/Started_and_attached_to_the_Ansible_container.png)
 
 2.	Connected by SSH from the Ansible container to Web-1.
 

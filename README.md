@@ -432,6 +432,8 @@ On checking the Metrics page for Web-1 on Kibana, the following was noted:
 ![Send wget command to all webservers](Images/Loop_that_sends_your_wget_command_to_all_VMs.png)
 
  </details>
+ 
+---
 
 <details><summary> <b> Click here for answers to potential interview questions based on the Automated ELK Server </b> </summary>
 
@@ -464,3 +466,5 @@ On Azure UI, we can check the settings for the network security groups which lis
 Since we have created an inbound security rule that Jump box can be only accessed from my personal IP address and other VMs can only be accessed through the jump box, I believe the solution guarantees that the Project 1 network is now "immune" to all unauthorized access.
 
 </details>
+
+---

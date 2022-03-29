@@ -100,7 +100,7 @@ What is the main advantage of automating configuration with Ansible?
 
 The playbook implements the following tasks:
 
-* Install docker.io
+* 	Install docker.io
 *	Install python3-pip
 *	Install docker module
 *	Increase virtual memory
@@ -183,101 +183,100 @@ With the help of Wireshark and Kibana, we can monitor the VMs to detect any susp
 ![Time of the day that had the highest amount of activity](Images/Highest_amount_of_traffic_10.png)
 
 ![Time of the day that had the highest amount of activity](Images/Highest_amount_of_traffic_12.png)
- 
 
- 
+6.	List all the types of downloaded files that have been identified for the last 7 days, along with a short description of each file type.
 
-6.	List all the types of downloaded files that have been identified for the last 7 days, along
-with a short description of each file type.
+- **gz:** .gz files are archived files compressed by the standard GNU zip (gzip) compression algorithm. It stands for Gnu Zipped Archive.
+- **css:** .css files are used to format the contents of a webpage like indentation, font, size, color, line spacing, border and location of HTML information on a webpage. It stands for Cascading Style Sheet. 
+- **zip:** .zip files are archive file that contains one or more compressed files or directories. It supports lossless data compression. It stands for zipped file.
+- **deb:** A .deb file is a Debian Software Package file used by Debian Linux Distribution and its variants. Each DEB file is a standard Unix archive that contains two .tar archives: one for installer control information and another for installable data.
+- **rpm:** .rpm file is an installation package originally developed for the Red Hat Linux operating system. It stands for Red Hat Package Manager File.
 
-o	gz: .gz files are archived files compressed by the standard GNU zip (gzip) compression algorithm. It stands for Gnu Zipped Archive.
-o	css: .css files are used to format the contents of a webpage like indentation, font, size, color, line spacing, border and location of HTML information on a webpage. It stands for Cascading Style Sheet. 
-o	zip: .zip files are archive file that contains one or more compressed files or directories. It supports lossless data compression. It stands for zipped file.
-o	deb: A .deb file is a Debian Software Package file used by Debian Linux Distribution and its variants. Each DEB file is a standard Unix archive that contains two .tar archives: one for installer control information and another for installable data.
-o	rpm: .rpm file is an installation package originally developed for the Red Hat Linux operating system. It stands for Red Hat Package Manager File.
-
- 
+![Types of downloaded files that have been identified for the last 7 days](Images/Downloaded_files.png)
 
 From Unique Visitors Vs. Average Bytes chart,
 
 7.	Locate the time frame in the last 7 days with the most amount of bytes (activity).
 
-Answer: 6 pm on 20th March 2022
+```Answer: 6 pm on 20th March 2022```
 
- 
+![Time frame in the last 7 days with the most amount of bytes](Images/Time_frame_most_amount_of_bytes.png) 
 
 8.	In your own words, is there anything that seems potentially strange about this activity?
 
-Answer: It is strange that a single visitor is using a much higher number of bytes (15709) than other visitors.
-
+```Answer: It is strange that a single visitor is using a much higher number of bytes (15709) than other visitors.```
+	
 On filtering the data by this event, 
 
 9.	What is the timestamp for this event?
 
-Answer: The time stamp is 19:55 for the filter Mar 20, 2022 @ 18:00:0 Mar 20, 2022 @ 21:00:0.
+```Answer: The time stamp is 19:55 for the filter Mar 20, 2022 @ 18:00:0 Mar 20, 2022 @ 21:00:0.```
 
- 
+![Time stamp of the event with the most amount of bytes](Images/Time_stamp_most_amount_of_bytes.png)
 
 10.	What kind of file was downloaded?
 
-Answer:  An rpm file
+```Answer:  An rpm file```
 
- 
+![Kind of file that was downloaded](Images/Kind_of_file_most_amount_of_bytes.png)
 
 11.	From what country did this activity originate?
 
-Answer: India
- 
+```Answer: India```
+	
+![Country from where the activity originated](Images/Country_originated_most_amount_of_bytes.png)
 
 12.	What HTTP response codes were encountered by this visitor?
 
-Answer: 200
+```Answer: 200```
 
- 
+![HTTP response codes encountered by the visitor](Images/HTTP_response_codes_most_amount_of_bytes.png)
 
 Switch over to the Kibana Discover page,
 
 13.	What is the source IP address of this activity?
 
-Answer: 35.143.166.159
+```Answer: 35.143.166.159```
 
 14.	What are the geo coordinates of this activity?
 
-Answer: { "lat": 43.34121, "lon": -73.6103075 }
+```Answer: { "lat": 43.34121, "lon": -73.6103075 }```
  
+![Source IP address and geo coordinates of the activity](Images/Source_IP_most_amount_of_bytes.png)
 
 15.	What OS was the source machine running?
 
-Answer: Windows 8
+```Answer: Windows 8```
 
- 
+![OS of the source machine](Images/OS_source_url_machine_most_amount_of_bytes.png) 
 
 16.	What is the full URL that was accessed?
 
-Answer: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.3.2-i686.rpm
+```Answer: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.3.2-i686.rpm```
 
- 
+![URL that was accessed](Images/URL_most_amount_of_bytes.png)  
 
 17.	From what website did the visitor's traffic originate?
 
-Answer: Facebook
+```Answer: Facebook```
 
- 
+![Website from where the visitor's traffic originated](Images/Website_originated_most_amount_of_bytes.png)  
 
 18.	What do you think the user was doing?
 
-Answer:  I think the user was trying to download an installation package (Metricbeat) for Linux from the website.
+```Answer:  I think the user was trying to download an installation package (Metricbeat) for Linux from the website.```
 
 19.	Was the file they downloaded malicious? If not, what is the file used for?
 
-Answer: The installation does not seem malicious but could be. The file is usually used to download or update Metricbeat.
+```Answer: The installation does not seem malicious but could be. The file is usually used to download or update Metricbeat.```
 
 20.	Is there anything that seems suspicious about this activity?
-Answer: Yes, the referrer for the download website was Facebook.
+
+```Answer: Yes, the referrer for the download website was Facebook.```
 
 21.	Is any of the traffic you inspected potentially outside of compliance guidelines?
 
-Answer: Since the download link was posted on Facebook, it might be outside of compliance guidelines. Ideally speaking, it is not expected to have a download/update link posted to social media.
+```Answer: Since the download link was posted on Facebook, it might be outside of compliance guidelines. Ideally speaking, it is not expected to have a download/update link posted to social media.```
 
 In order to verify the ELK Server is functioning properly and Filebeat and Metricbeat are collecting data correctly, the following tasks are performed:
 

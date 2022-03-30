@@ -492,7 +492,7 @@ The diagram below shows the network diagram representing the pre-requisites.
           Review the settings and click on Create.
 
  	![Create virtual network - Review and create](Images/Create_virtual_network_review_create.png)
-	![Create virtual network - Deployment Completed](Images/Create_virtual_deployment_completed.png)
+	![Create virtual network - Deployment Completed](Images/Create_virtual_network_deployment_completed.png)
 
 2.	Create a peer connection between your virtual networks.
 

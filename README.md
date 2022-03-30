@@ -1,5 +1,7 @@
 # Contents of Repository
 
+---
+
 - **Ansible**: Filebeat and Metricbeat configuration, Ansible configuration, hosts files, playbook files for installing ELK, Filebeat, Metricbeat and configuring the VM with Docker
 - **Diagrams:** Network Diagrams from Networking and Cloud Security
 - **Images:** Images used in the README
@@ -440,10 +442,10 @@ On checking the Metrics page for Web-1 on Kibana, the following was noted:
 
 #### Pre-requisites
 
-- Azure Portal account
-- Resource Group: RedTeam
-- Virtual Network: RedTeamNet (10.0.0.0/16; Subnet – 10.0.0.0/24)
-- Network Security Group: RedTeamSecurityGroup
+- **Azure Portal account**
+- **Resource Group:** RedTeam
+- **Virtual Network:** RedTeamNet (10.0.0.0/16; Subnet – 10.0.0.0/24)
+- **Network Security Group**: RedTeamSecurityGroup
 
 	Rules:
 	- Port 80 from workstation IP to VNet
@@ -453,11 +455,11 @@ On checking the Metrics page for Web-1 on Kibana, the following was noted:
 	- Allow Azure Load Balancer Inbound
 	- Deny All Inbound
 
-- Jumpbox: Jump-Box-Provisioner with Ansible (Public IP: 13.83.47.196 Private IP: 10.0.0.4)
-- Web Servers: Web-1 (Private IP: 10.0.0.5), Web-2 (Private IP: 10.0.0.6) and Web-3 (Private IP: 10.0.0.7)
-- Load Balancer: RedTeamLoadBalancer (Front End IP: 13.64.143.159)
+- **Jumpbox:** Jump-Box-Provisioner with Ansible (Public IP: 13.83.47.196 Private IP: 10.0.0.4)
+- **Web Servers:** Web-1 (Private IP: 10.0.0.5), Web-2 (Private IP: 10.0.0.6) and Web-3 (Private IP: 10.0.0.7)
+- **Load Balancer:** RedTeamLoadBalancer (Front End IP: 13.64.143.159)
 
-The diagram below shows the network diagram representing the pre-requisites.
+The diagram below shows the network diagram representing the pre-requisites:
 
  ![Red Team Network Diagram](Images/Red_Team_Network_Diagram.png)
 
@@ -515,7 +517,7 @@ The diagram below shows the network diagram representing the pre-requisites.
 	![Create peer network - Virtual Network](Images/Create_peer_connection_virtual_network.png)
 
 
-	- Click Next
+	- Click Next.
 
 	![Create peer network - Peering Created](Images/Peer_connection_created.png)
  
@@ -523,7 +525,7 @@ The diagram below shows the network diagram representing the pre-requisites.
 
 1.	Create a new Ubuntu VM (ELKServer)in the virtual network with the following configurations:
 
-	a.	RAM:  4 GB+
+	a.	**RAM:**  4 GB+
 
 	You can use either of these machines:
 	- Standard D2s v3 (2 vcpus, 8GiB memory)
@@ -531,7 +533,7 @@ The diagram below shows the network diagram representing the pre-requisites.
 
 	In case you are unable to get the required VM, try deploying the VM in a different region.
 
-	b.	Operating System:  Ubuntu Server 18.04 LTS – Gen2 (free services eligible)
+	b.	**Operating System:**  Ubuntu Server 18.04 LTS – Gen2 (free services eligible)
 
 	To get the SSH key created on the Ansible container running on your jump box, follow the steps below:
 
@@ -543,6 +545,7 @@ The diagram below shows the network diagram representing the pre-requisites.
 		sudo docker attach (container_name)
 		```
 	3. Retrieve your public ssh key.
+		
 		```cat ~/.ssh/id_rsa.pub```
 	
 	![Create virtual network - Basics 1](Images/Create_VM_Basics_1.png)
@@ -551,34 +554,34 @@ The diagram below shows the network diagram representing the pre-requisites.
 
 	Click Next.
 
-	c.	Disks: Standard SSD for OS Disk Type. Leave the remaining settings as default.
+	c.	**Disks:** Standard SSD for OS Disk Type. Leave the remaining settings as default.
  
 	![Create virtual network - Disks 1](Images/Create_VM_Disks_1.png)
 	![Create virtual network - Disks 2](Images/Create_VM_Disks_2.png)
 	 
 	Click Next.
 	
-	d.	IP Address:   Create a new static public IP Address.
+	d.	**IP Address:**   Create a new static public IP Address.
 	
 	![Create virtual network - IP Address](Images/Create_VM_IP_addressing.png)
 
 	Click Next.
 	
-	e.	Networking: The VM should be added to the new region where you have created the virtual network. A new basic Security Group to be created for this VM.
+	e.	**Networking:** The VM should be added to the new region where you have created the virtual network. A new basic Security Group to be created for this VM.
 
 	![Create virtual network - Networking 1](Images/Create_VM_networking_1.png)
 	![Create virtual network - Networking 2](Images/Create_VM_networking_2.png)
 
 	Click Next.
 
-	f.	Management: Leave the settings as default.
+	f.	**Management:** Leave the settings as default.
 
  	![Create virtual network - Management 1](Images/Create_VM_Management_1.png)
 	![Create virtual network - Management 2](Images/Create_VM_Management_2.png)
  
 	Click Next.
 
-	g.	Advanced: Leave the settings as default.
+	g.	**Advanced:** Leave the settings as default.
 
  	![Create virtual network - Advanced 1](Images/Create_VM_advanced_1.png)
 	![Create virtual network - Advanced 2](Images/Create_VM_advanced_2.png)
@@ -586,7 +589,7 @@ The diagram below shows the network diagram representing the pre-requisites.
 
 	Click Next.
 
-	h.	Tags: Leave the settings as default.
+	h.	**Tags:** Leave the settings as default.
  
 	![Create virtual network - Tags](Images/Create_VM_tags.png)
 
@@ -675,7 +678,7 @@ Using Ansible, we can configure the new VM to function as an ELK Server.
 
 4.	Navigate to http://[ELK-VM.External.IP]:5601/app/kibana to verify access to ELK Server.
 
- 	![Verify Access to ELK Server](Images/'Kibana server landing page'.png)
+ 	![Verify Access to ELK Server](Images/Kibana_server_landing_page.png)
 
 
 **Chapter 6: Installing Filebeat on the DVWA Container**

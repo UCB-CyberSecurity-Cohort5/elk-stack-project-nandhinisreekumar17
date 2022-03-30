@@ -526,85 +526,83 @@ The diagram below shows the network diagram representing the pre-requisites.
 	a.	RAM:  4 GB+
 
 	You can use either of these machines:
-		- Standard D2s v3 (2 vcpus, 8GiB memory)
-		- Standard B2s (2vcpus, 4GiB memory
+	- Standard D2s v3 (2 vcpus, 8GiB memory)
+	- Standard B2s (2vcpus, 4GiB memory
 
-In case you are unable to get the required VM, try deploying the VM in a different region.
+	In case you are unable to get the required VM, try deploying the VM in a different region.
 
-b.	Operating System:  Ubuntu Server 18.04 LTS – Gen2 (free services eligible)
+	b.	Operating System:  Ubuntu Server 18.04 LTS – Gen2 (free services eligible)
 
-To get the SSH key created on the Ansible container running on your jump box, follow the steps below:
+	To get the SSH key created on the Ansible container running on your jump box, follow the steps below:
 
-1.	SSH into the jump box through the terminal on your workstation.
-2.	Run the docker commands to start and attach to your Ansible container.
+	 1. SSH into the jump box through the terminal on your workstation.
+	 2. Run the docker commands to start and attach to your Ansible container.
 
-sudo docker start (container_name)
-sudo docker attach (container_name)
+		```
+		sudo docker start (container_name)
+		sudo docker attach (container_name)
+		```
+	3. Retrieve your public ssh key.
+		```cat ~/.ssh/id_rsa.pub```
+	
+	![Create virtual network - Basics 1](Images/Create_VM_Basics_1.png)
+	![Create virtual network - Basics 2](Images/Create_VM_Basics_2.png)
+	![Create virtual network - Basics 3](Images/Create_VM_Basics_3.png) 
 
-3.	Retrieve your public ssh key.
+	Click Next.
 
-cat ~/.ssh/id_rsa.pub
-
+	c.	Disks: Standard SSD for OS Disk Type. Leave the remaining settings as default.
  
+	![Create virtual network - Disks 1](Images/Create_VM_Disks_1.png)
+	![Create virtual network - Disks 2](Images/Create_VM_Disks_2.png)
+	 
+	Click Next.
+	
+	d.	IP Address:   Create a new static public IP Address.
+	
+	![Create virtual network - IP Address](Images/Create_VM_IP_addressing.png)
 
+	Click Next.
+	
+	e.	Networking: The VM should be added to the new region where you have created the virtual network. A new basic Security Group to be created for this VM.
+
+	![Create virtual network - Networking 1](Images/Create_VM_networking_1.png)
+	![Create virtual network - Networking 2](Images/Create_VM_networking_2.png)
+
+	Click Next.
+
+	f.	Management: Leave the settings as default.
+
+ 	![Create virtual network - Management 1](Images/Create_VM_Management_1.png)
+	![Create virtual network - Management 2](Images/Create_VM_Management_2.png)
  
+	Click Next.
 
+	g.	Advanced: Leave the settings as default.
+
+ 	![Create virtual network - Advanced 1](Images/Create_VM_advanced_1.png)
+	![Create virtual network - Advanced 2](Images/Create_VM_advanced_2.png)
+	![Create virtual network - Advanced 3](Images/Create_VM_advanced_3.png)
+
+	Click Next.
+
+	h.	Tags: Leave the settings as default.
  
+	![Create virtual network - Tags](Images/Create_VM_tags.png)
 
-Click Next.
+	Click Review + create.
 
-c.	Disks: Standard SSD for OS Disk Type. Leave the remaining settings as default.
+	![Create virtual network - Review and Create](Images/Create_VM_review_create.png)
  
+	Click Create.
 
+	![Create virtual network - Deployment Complete](Images/Create_VM_deployment_complete.png)
  
-
-d.	IP Address:   Create a new static public IP Address.
-
+	Click Go to resource to view the ELKServer VM.
+	
+	![Create virtual network - ELKServer VM](Images/Create_VM_elk_server_created.png)
+	
  
-
-e.	Networking: The VM should be added to the new region where you have created the virtual network. A new basic Security Group to be created for this VM.
-
- 
-
- 
-
-Click Next.
-
-f.	Management: Leave the settings as default.
-
- 
- 
-
-Click Next.
-
-g.	Advanced: Leave the settings as default.
-
- 
-
-
- 
-
-
- 
-
-Click Next.
-
-1.	Tags: Leave the settings as default.
- 
-
-Click Review + create.
-
- 
-
-Click Create.
-
-
- 
-
-Click Go to resource to view the ELKServer VM.
-
- 
-
 2.	To verify if the VM was created correctly, SSH into the VM using the private IP address  from the Ansible container on jump box.
 
  

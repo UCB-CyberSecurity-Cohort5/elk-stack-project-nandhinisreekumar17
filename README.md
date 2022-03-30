@@ -675,7 +675,7 @@ Using Ansible, we can configure the new VM to function as an ELK Server.
 
 4.	Navigate to http://[ELK-VM.External.IP]:5601/app/kibana to verify access to ELK Server.
 
- 	![Verify Access to ELK Server](Images/Kibana server landing page.png)
+ 	![Verify Access to ELK Server](Images/'Kibana server landing page'.png)
 
 
 **Chapter 6: Installing Filebeat on the DVWA Container**

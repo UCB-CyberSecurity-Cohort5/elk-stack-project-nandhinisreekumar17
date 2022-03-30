@@ -179,11 +179,9 @@ With the help of Wireshark and Kibana, we can monitor the VMs to detect any susp
 
 5.	Of the traffic that's coming from that country, what time of day had the highest amount of activity?
 
-```Answer : 10 am and 12 pm```
+```Answer : 10 am```
 	
 ![Time of the day that had the highest amount of activity](Images/Highest_amount_of_traffic_10.png)
-
-![Time of the day that had the highest amount of activity](Images/Highest_amount_of_traffic_12.png)
 
 6.	List all the types of downloaded files that have been identified for the last 7 days, along with a short description of each file type.
 
@@ -211,7 +209,7 @@ On filtering the data by this event,
 
 9.	What is the timestamp for this event?
 
-```Answer: The time stamp is 19:55 for the filter Mar 20, 2022 @ 18:00:0 Mar 20, 2022 @ 21:00:0.```
+```Answer: The time stamp is 19:55 for the filter: Mar 20, 2022 @ 18:00:0 Mar 20, 2022 @ 21:00:0.```
 
 ![Time stamp of the event with the most amount of bytes](Images/Time_stamp_most_amount_of_bytes.png)
 
@@ -332,9 +330,11 @@ In order to verify the ELK Server is functioning properly and Filebeat and Metri
 
 1.	Started and attached to the Ansible container from the Jumpbox
 
-	``sudo docker start competent_lumiere```
-	``sudo docker attach competent_lumiere```
-
+	```
+	sudo docker start competent_lumiere
+	sudo docker attach competent_lumiere
+	```
+	
  ![Start and attach the Ansible container](Images/Started_and_attached_to_the_Ansible_container.png)
 
 2.	Connected by SSH from the Ansible container to Web-1.
@@ -427,7 +427,7 @@ On checking the Metrics page for Web-1 on Kibana, the following was noted:
 - `{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to `i` variable to represent the IP addresses of the webservers.
 - `;` separates the portions of `for` loop when it is written on one line.
 - `do` indicates the action taken each loop.
-- `wget 10.0.0.$i` is the command `do` runs . It is passing in the `$i` variable so the ssh command will be run on each webserver.
+- `wget -O /dev/null 10.0.0.$i` is the command `do` runs . It is passing in the `$i` variable so the ssh command will be run on each webserver.
 - `done` closes the `for` loop.
 	
 ![Send wget command to all webservers](Images/Loop_that_sends_your_wget_command_to_all_VMs.png)

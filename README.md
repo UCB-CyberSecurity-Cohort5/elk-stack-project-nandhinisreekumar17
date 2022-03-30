@@ -682,55 +682,54 @@ Using Ansible, we can configure the new VM to function as an ELK Server.
 
 1.	Click 'Explore on my Own' on the Kibana server landing page.
 
- 	![Kibana Server Landing Page](Images/Kibana server landing page.png)
+ 	![Kibana Server Landing Page](Images/Kibana_server_landing_page.png)
 
 2.	Click Add Log Data.
 
- 
+ 	![Add log data](Images/Install_filebeat_add_log_data.png)
 
 3.	Choose System Logs.
-Click on the DEB tab under Getting Started.
+	Click on the DEB tab under Getting Started.
+	
+	![Choose system logs](Images/Install_filebeat_system_logs.png)	
 
- 
-
-The Filebeat installation instructions can be found here which is used for installing Filebeat using ansible playbook.
+ 	The Filebeat installation instructions can be found here which is used for installing Filebeat using ansible playbook.
 
 4.	Install Filebeat using the commands displayed on the Kibana server landing page.
 
- 
+ 	![Install Filebeat using the instructions](Images/Install_filebeat_using_instructions.png)	
 
 5.	Install Elasticsearch using the following commands:
 
-curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-amd64.deb
-sudo dpkg -i elasticsearch-7.6.2-amd64.deb
-sudo /etc/init.d/elasticsearch start
-
- 
-
+	```
+	curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-amd64.deb
+	sudo dpkg -i elasticsearch-7.6.2-amd64.deb
+	sudo /etc/init.d/elasticsearch start
+	```
+ 	![Install Elasticsearch](Images/Install_elasticsearch.png)
+	
 6.	SSH into your Jumpbox.
 7.	Start and attach to the docker container.
 8.	Run the following curl command to get the filebeat configuration file:
 
-curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat
+	curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat
 
- 
-
-We can also use the Filebeat configuration file template provided.
+ 	![Get filebeat configuration file](Images/Get_filebeat_configration_file.png)
 
 9.	Copy the content to a new file (filebeat-config.yml)
 
- 
+ 	![Create filebeat configuration file](Images/Filebeat_configuration_file_create.png)
 
-9.1 Edit the username and password to elastic and changeme respectively in the configuration file. Also, replace the IP address with the IP address of your ELK Server VM.
+	- Edit the username and password to elastic and changeme respectively in the configuration file. Also, replace the IP address with the IP address of your ELK Server VM.
 
- 
+ 	![Add username, password and change IP address in output.elastic](Images/Filebeat_configuration_file_username_password.png)
 
-9.2 Scroll to line #1806 (setup.kibana) and replace the IP address with the IP address of your ELK machine.
-
- 
-
+	- Scroll to line #1806 (setup.kibana) and replace the IP address with the IP address of your ELK machine.
+	
+	![Change IP address in setup.kibana](Images/Filebeat_configuration_file_setup_kibana.png)
+	
  
-Chapter 7: Creating the Filebeat Installation Play
+**Chapter 7: Creating the Filebeat Installation Play**
 
 1.	Create a playbook to install Filebeat in /etc/ansible/roles/ directory. (filebeat-playbook.yml) with the following tasks:
 

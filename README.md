@@ -765,69 +765,63 @@ Using Ansible, we can configure the new VM to function as an ELK Server.
 
 1.	Click 'Explore on my Own' on the Kibana server landing page.
 
- 
+ 	![Kibana Server Landing Page](Images/Kibana_server_landing_page.png)
 
 2.	Click Add Metric Data.
 
- 
-
+ 	![Add metric data](Images/Install_metricbeat_add_metric_data.png)
 
 3.	Click Docker Metrics.
-Click the DEB tab under Getting Started.
+	Click the DEB tab under Getting Started.
 
- 
+ 	![Choose Docker Metrics](Images/Install_filebeat_docker_metrics.png)
 
 The Metricbeat installation instructions can be found here which is used for installing Metricbeat using ansible playbook.
 
 4.	Install Metricbeat using the commands displayed on the Kibana server landing page.
 
- 
+ 	![Install Metricbeat using the instructions](Images/Install_metricbeat_using_instructions.png)
 
 5.	SSH into your Jumpbox.
 6.	Start and attach to the docker container.
 7.	Copy the content of the Metricbeat configuration file template to a new file (metricbeat-config.yml)
 
+ 	![Create Metricbeat Configuration File](Images/Metricbeat_configuration_file_create.png)
+	
+	- Edit the username and password to elastic and changeme respectively in the configuration file. Also, replace the IP address with the IP address of your ELK Server VM.
+
+ 	![Add username, password and change IP address in output.elastic for Metribeat](Images/Metricbeat_configuration_file_username_password.png)
+
+	- Scroll to line #1806 (setup.kibana) and replace the IP address with the IP address of your ELK machine.
+
+	![Change IP address in setup.kibana for Metribeat](Images/Metricbeat_configuration_file_setup_kibana.png)
  
-7.1 Edit the username and password to elastic and changeme respectively in the configuration file. Also, replace the IP address with the IP address of your ELK Server VM.
-
- 
-
-7.2 Scroll to line #1806 (setup.kibana) and replace the IP address with the IP address of your ELK machine.
-
-
- 
-
 8.	Create a playbook to install Filebeat in /etc/ansible/roles/ directory. (filebeat-playbook.yml) with the following tasks:
 
-•	Download the .deb file from artifacts.elastic.co.
-•	Install the .deb file.
-•	Copy the Metribeat configuration file from the Ansible container to the WebVM(s) Metricbeat was installed. 
-•	Enable and configure the docker module for metricbeat
-•	Setup Metricbeat
-•	Start Metricbeat service
-•	Enable the Metricbeat service on boot
+	- Download the .deb file from artifacts.elastic.co.
+	- Install the .deb file.
+	- Copy the Metribeat configuration file from the Ansible container to the WebVM(s) Metricbeat was installed. 
+	- Enable and configure the docker module for metricbeat
+	- Setup Metricbeat
+	- Start Metricbeat service
+	- Enable the Metricbeat service on boot
 
- 
-
-
- 
-
- 
+ 	![Create Metricbeat playbook 1](Images/Metricbeat_playbook_create.png)
+	![Create Metricbeat playbook 2](Images/Metricbeat_playbook_1.png)
+	![Create Metricbeat playbook 3](Images/Metricbeat_playbook_2.png)
 
 9.	Save the file.
 10.	Run the playbook.
 
+ 	![Run Metricbeat playbook 2](Images/Run_metricbeat_playbook_1.png)
+	![Run Metricbeat playbook 3](Images/Run_metricbeat_playbook_2.png)
  
- 
-
 11.	Navigate to the Filebeat installation page on Kibana.
 12.	On the same page, scroll to Step 5: Module Status and click Check Data.
 13.	Scroll to the bottom of the page and click Verify Incoming Data.
 
- 
+ 	![Verify metricbeat installation and Playbook](Images/Verify_installation_Playbook_metricbeat.png)
 
-
-	
 </details>
 
 ---

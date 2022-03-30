@@ -496,36 +496,38 @@ The diagram below shows the network diagram representing the pre-requisites.
 
 2.	Create a peer connection between your virtual networks.
 
-2.1 Navigate to 'Virtual Network' in the Azure Portal.
-       Select your new virtual network.
+	- Navigate to 'Virtual Network' in the Azure Portal.
+          Select your new virtual network.
 
+ 	![Create peer network - Main Screen](Images/Create_peer_connection_main.png)
+	![Create peer network - ELK Settings](Images/Create_peer_connection_elk_settings.png)
  
- 
- 
+ 	- Under ‘Settings’ on the left side, select ‘Peerings’.
+       	  Click on ‘Add’ to create a new peering.
+	
+ 	![Create peer network - Add New](Images/Create_peer_connection_add_new.png)
 
-2.2 Under ‘Settings’ on the left side, select ‘Peerings’.
-       Click on ‘Add’ to create a new peering.
- 
+	- Add peering link names for the ELK virtual network and remote virtual network (RedTeamNet).
+          Select remote virtual network (RedTeamNet) from the ‘Virtual Network’ dropdown.
+          Leave the remaining settings as default.
 
-2.3 Add peering link names for the ELK virtual network and remote virtual network 	(RedTeamNet).
-       Select remote virtual network (RedTeamNet) from the ‘Virtual Network’ dropdown.
-       Leave the remaining settings as default.
+	![Create peer network - Add Peerings Names](Images/Create_peer_connection_add_peering_names.png)
+	![Create peer network - Virtual Network](Images/Create_peer_connection_virtual_network.png)
 
- 
- 
 
-2.4 Click Next
+	- Click Next
 
+	![Create peer network - Peering Created](Images/Peer_connection_created.png)
  
- 
-Chapter 2: Create a new Virtual Machine
+**Chapter 2: Create a new Virtual Machine**
 
 1.	Create a new Ubuntu VM (ELKServer)in the virtual network with the following configurations:
 
-a.	RAM:  4 GB+
-You can use either of these machines:
-o	Standard D2s v3 (2 vcpus, 8GiB memory)
-o	Standard B2s (2vcpus, 4GiB memory
+	a.	RAM:  4 GB+
+
+	You can use either of these machines:
+		- Standard D2s v3 (2 vcpus, 8GiB memory)
+		- Standard B2s (2vcpus, 4GiB memory
 
 In case you are unable to get the required VM, try deploying the VM in a different region.
 

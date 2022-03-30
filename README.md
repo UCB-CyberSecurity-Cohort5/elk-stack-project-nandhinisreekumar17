@@ -733,38 +733,35 @@ Using Ansible, we can configure the new VM to function as an ELK Server.
 
 1.	Create a playbook to install Filebeat in /etc/ansible/roles/ directory. (filebeat-playbook.yml) with the following tasks:
 
-•	Download the .deb file from artifacts.elastic.co.
-•	Install the .deb file.
-•	Copy the Filebeat configuration file from the Ansible container to the WebVM(s) Filebeat was installed. 
-•	Enable and configure the system modules
-•	Setup Filebeat
-•	Start Filebeat service
-•	Enable the Filebeat service on boot.
+	- Download the .deb file from artifacts.elastic.co.
+	- Install the .deb file.
+	- Copy the Filebeat configuration file from the Ansible container to the WebVM(s) Filebeat was installed. 
+	- Enable and configure the system modules
+ 	- Setup Filebeat
+	- Start Filebeat service
+	- Enable the Filebeat service on boot.
 
- 
-
-
- 
-
- 
+ 	![Create filebeat playbook 1](Images/Filebeat_playbook_create.png)
+	![Create filebeat playbook 2](Images/Filebeat_playbook_1.png)
+	![Create filebeat playbook 3](Images/Filebeat_playbook_2.png)
 
 2.	Save the file.
 3.	Run the playbook.
 
+	![Run filebeat playbook 2](Images/Run_filebeat_playbook_1.png)
+	![Run filebeat playbook 3](Images/Run_filebeat_playbook_2.png)
  
-
- 
-
- 
-Chapter 8: Verifying Installation and Playbook
+	
+**Chapter 8: Verifying Installation and Playbook**
 
 1.	Navigate to the Filebeat installation page on Kibana.
 2.	On the same page, scroll to Step 5: Module Status and click Check Data.
 3.	Scroll to the bottom of the page and click Verify Incoming Data.
 
- 
+ 	![Verify filebeat installation and Playbook](Images/Verify_installation_Playbook_filebeat.png)
  
-Chapter 9: Creating a Play to Install Metricbeat
+
+**Chapter 9: Creating a Play to Install Metricbeat**
 
 1.	Click 'Explore on my Own' on the Kibana server landing page.
 

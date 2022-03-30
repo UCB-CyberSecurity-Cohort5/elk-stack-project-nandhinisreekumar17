@@ -602,49 +602,46 @@ The diagram below shows the network diagram representing the pre-requisites.
 	
 	![Create virtual network - ELKServer VM](Images/Create_VM_elk_server_created.png)
 	
- 
 2.	To verify if the VM was created correctly, SSH into the VM using the private IP address  from the Ansible container on jump box.
-
- 
+	
+	![SSH to ELKServer VM](Images/SSH_into_ELK_server.png)
  
-Chapter 3: Downloading and Configuring the Container
+**Chapter 3: Downloading and Configuring the Container**
 
 Using Ansible, we can configure the new VM to function as an ELK Server.
 
 1.	From the Ansible VM, change to /etc/ansible/ directory.
 
-cd /etc/ansible/
+	```cd /etc/ansible/```
 
 2.	Add the new VM to Ansible’s hosts file for Ansible to understand the list of machines it can discover and connect to.
 
-nano hosts
+	```nano hosts```
 
 3.	Add [elk] group and IP address of the ELKServer VM.
-We can specify the groups on which the playbooks should be run.
+	We can specify the groups on which the playbooks should be run.
 
- 
+ 	![Hosts file](Images/Hosts_file.png)
 
 4.	Create the playbook to configure the ELK Server. The playbook should run on the [elk] group.
 
-The playbook should:
-o	Install docker.io (Docker engine) and python3-pip (Python software installer) packages.
-o	Install docker, the Python client for Docker which required by Ansible to control the state of Docker containers.
-o	Download the Docker container called sebp/elk:761.
-o	Configure the container to start with the following port mappings: 
-•	5601:5601
-•	9200:9200
-•	5044:5044
-o	Start the container
-o	Enables the docker service on boot
+	The playbook should:
+	- Install docker.io (Docker engine) and python3-pip (Python software installer) packages.
+	- Install docker, the Python client for Docker which required by Ansible to control the state of Docker containers.
+	- Download the Docker container called sebp/elk:761.
+	- Configure the container to start with the following port mappings: 
+		- 5601:5601
+		- 9200:9200
+		- 5044:5044
+	- Start the container
+	- Enables the docker service on boot
 
-nano install-elk.yml
-
- 
-
- 
-
- 
-Chapter 4: Launching and Exposing the Container
+	```nano install-elk.yml```
+	
+	![Install ELK Server Playbook 1](Images/Install_elk_1.png)
+	![Install ELK Server Playbook 2](Images/Install_elk_2.png)
+	 
+**Chapter 4: Launching and Exposing the Container**
 
 1.	Run the playbook
 

@@ -606,6 +606,7 @@ The diagram below shows the network diagram representing the pre-requisites.
 	
 	![SSH to ELKServer VM](Images/SSH_into_ELK_server.png)
  
+
 **Chapter 3: Downloading and Configuring the Container**
 
 Using Ansible, we can configure the new VM to function as an ELK Server.
@@ -641,49 +642,47 @@ Using Ansible, we can configure the new VM to function as an ELK Server.
 	![Install ELK Server Playbook 1](Images/Install_elk_1.png)
 	![Install ELK Server Playbook 2](Images/Install_elk_2.png)
 	 
+
 **Chapter 4: Launching and Exposing the Container**
 
 1.	Run the playbook
 
-ansible-playbook -m install-elk.yml
-
- 
+	```ansible-playbook -m install-elk.yml```
+	
+ 	![Run Install ELK Playbook](Images/Run_install_elk.png)
 
 2.	SSH into the ELK Server VM and ensure sebp/elk:761 container is running.
 
-docker ps
+	```docker ps```
 
- 
-
+ 	![Docker PS Output](Images/docker_ps_output.png)
+	
  
-Chapter 5: Identity and Access Management
+**Chapter 5: Identity and Access Management**
 
 1.	On the Azure portal, navigate to network security groups.
 
- 
+ 	![Network Security Groups](Images/IAM_network_security_groups.png)
 
 2.	Create an inbound security rule in the network security group to allow traffic over TCP 5601 from the workstation public IP to the ELK Server and to restrict other access to the ELK Server.
 
- 
-
- 
+ 	![Inbound Security Rule 1](Images/IAM_NSG_security_rule_1.png)
+	![Inbound Security Rule 2](Images/IAM_NSG_security_rule_2.png)
 
 3.	Click Add.
 
- 
+ 	![Inbound Security Rule Added](Images/IAM_NSG_security_rule_added.png)
 
 4.	Navigate to http://[ELK-VM.External.IP]:5601/app/kibana to verify access to ELK Server.
 
- 
+ 	![Verify Access to ELK Server](Images/Kibana server landing page.png)
 
 
-
- 
-Chapter 6: Installing Filebeat on the DVWA Container
+**Chapter 6: Installing Filebeat on the DVWA Container**
 
 1.	Click 'Explore on my Own' on the Kibana server landing page.
 
- 
+ 	![Kibana Server Landing Page](Images/Kibana server landing page.png)
 
 2.	Click Add Log Data.
 

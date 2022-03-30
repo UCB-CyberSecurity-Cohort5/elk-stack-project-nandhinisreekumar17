@@ -461,38 +461,38 @@ The diagram below shows the network diagram representing the pre-requisites.
 
  ![Red Team Network Diagram](Images/Red_Team_Network_Diagram.png)
 
-Instructions:
+### Instructions:
 
-Chapter 1: Create a new Virtual Network 
+**Chapter 1: Create a new Virtual Network**
 
 1.	On the Azure portal, create a new virtual network located in the same resource group where the pre-requisite VMs (web servers) are located and in a new region that is different from that of the other VMs. 
 
-1.1 In my example, I had created RedTeamNet in US West zone and created ELKNet in US East zone.
+	- In my example, I had created RedTeamNet in US West zone and created ELKNet in US East zone.
 
+ 	![Create virtual network - Basics](Images/Create_virtual_network_basics.png)
+
+	- Click Next. 
+          The IP addresses space will be automatically created. 
+          Select the default subnet.
+
+ 	![Create virtual network - IP Address](Images/Create_virtual_network_IP_address.png)
+
+	- Click Next. 
+          Leave the settings at default.
+
+ 	![Create virtual network - Security](Images/Create_virtual_network_security.png)
+
+	- Click Next. 
+          Leave the settings at default.
+
+	![Create virtual network - Tags](Images/Create_virtual_network_tags.png)
  
 
-1.2 Click Next. 
-              The IP addresses space will be automatically created. 
-              Select the default subnet.
+	- Click Next. 
+          Review the settings and click on Create.
 
- 
-
-1.3 Click Next. 
-              Leave the settings at default.
-
- 
-
-1.4 Click Next. 
-              Leave the settings at default.
-
- 
-
-1.5 Click Next. 
-             Review the settings and click on Create.
-
- 
-
- 
+ 	![Create virtual network - Review and create](Images/Create_virtual_network_review_create.png)
+	![Create virtual network - Deployment Completed](Images/Create_virtual_deployment_completed.png)
 
 2.	Create a peer connection between your virtual networks.
 
